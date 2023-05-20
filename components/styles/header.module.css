@@ -1,0 +1,149 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  font-family: Sofia Pro;
+  font-weight: medium;
+  font-size: 20px;
+  padding: 23px;
+  box-shadow: 2px 2px 10px gray;
+}
+
+.header {
+  background-color: var(--header-background-color, #fff9ef);
+}
+
+.link {
+  margin-right: 40px;
+}
+
+.changeWebVersion {
+  width: fit-content;
+  border: solid 3px rgba(197, 197, 255, 1);
+  border-radius: 40px;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+.changeWebVersionActive {
+  background-color: rgba(197, 197, 255, 1);
+  width: fit-content;
+  border: solid 3px rgba(197, 197, 255, 1);
+  border-radius: 40px;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+.hamburgerChangeWebVersionContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hamburgerChangeWebVersion {
+  width: fit-content;
+  border: solid 2px rgba(197, 197, 255, 1);
+  border-radius: 40px;
+  padding: 7px;
+  margin: 10px 0;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logoAndHome,
+.menuItems {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  width: 35px;
+  height: 35px;
+}
+
+.menuIcon,
+.purpleRect {
+  fill: var(--menue-color, rgba(197, 197, 255, 1));
+}
+
+.menuSpan,
+.homeLink {
+  margin-left: 8px;
+}
+
+.hamburgerMenu {
+  display: flex;
+  align-items: center;
+}
+
+.hamburgerIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburgerIcon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.metaActive {
+  display: visible;
+}
+
+.metaNonActive {
+  display: none;
+}
+
+.hamburgerIcon.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerIcon.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.eachMenuContainer {
+  display: flex;
+  margin: 10px 0;
+}
+
+.hamburgerMenuIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: var(--header-background-color, #fff9ef);
+  box-shadow: 2px 2px 10px gray;
+  padding: 20px;
+}
+
+.menuContent .link {
+  margin-bottom: 20px;
+}
+
+.menuContent .link:last-child {
+  margin-bottom: 0;
+}

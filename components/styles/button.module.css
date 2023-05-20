@@ -1,0 +1,25 @@
+.hamburgerChangeWebVersion {
+  width: fit-content;
+  border: solid 2px rgba(197, 197, 255, 1);
+  border-radius: 40px;
+  padding: 7px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.connectWalletButton {
+  width: fit-content;
+  background-color: white;
+  border: solid 2px rgba(197, 197, 255, 1);
+  border-radius: 10px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.marginRM{
+  margin-right: 40px;
+}
+
+.active {
+  background-color: rgba(197, 197, 255, 1);
+}
