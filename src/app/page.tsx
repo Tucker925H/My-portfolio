@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const posts = [
   {
@@ -39,13 +40,13 @@ export default function Home() {
         </p>
         <div className="flex items-center gap-6">
           <Link
-            to="/about"
+            href="/about"
             className="text-sm font-medium text-gray-900 border-b border-gray-900 pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors"
           >
             About me →
           </Link>
           <Link
-            to="/projects"
+            href="/projects"
             className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
           >
             Projects
@@ -60,9 +61,11 @@ export default function Home() {
           {posts.map((post, i) => {
             const inner = (
               <div className="flex gap-5 items-start group cursor-pointer">
-                <img
+                <Image
                   src={post.img}
                   alt={post.title}
+                  width={80}
+                  height={80}
                   className="w-20 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
                 />
                 <div className="flex-1 min-w-0">

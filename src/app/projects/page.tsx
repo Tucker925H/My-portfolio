@@ -6,8 +6,8 @@ const projects: {
 }[] = [
   {
     title: 'Portfolio Site',
-    description: 'Vite + React + TypeScript + Tailwind CSS で構築した個人ポートフォリオサイト。',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    description: 'Next.js + TypeScript + Tailwind CSS で構築した個人ポートフォリオサイト。',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
   },
 ]
 
