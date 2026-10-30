@@ -9,6 +9,16 @@ const projects: {
   links?: { label: string; href: string }[]
 }[] = [
   {
+    title: '琵琶湖・守山スタンプラリー — 守山市 × Plaru 観光DX実証',
+    description: '守山市の官民連携プロジェクトサポート事業に採択。AI旅行計画アプリ「ぷらる」を活用し、滋賀県内30か所を巡るデジタルスタンプラリーを2026年8月〜2027年2月に実施。観光客の周遊データを可視化し、データドリブンな観光施策の立案を支援する観光DX実証。',
+    tags: ['観光DX', 'React Native', 'AI', 'Open Data', '官民連携'],
+    links: [
+      { label: 'PR Times', href: 'https://prtimes.jp/main/html/rd/p/000000013.000141944.html' },
+      { label: 'Plaru News', href: 'https://www.plaru.co.jp/news/post/rsWAfwor' },
+      { label: 'Instagram', href: 'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1' },
+    ],
+  },
+  {
     title: 'Interactive Outdoor Cooking Machine — Osaka Expo Scout Day',
     description: '大阪万博スカウトデイで展示した野外料理体験マシーン。RFIDカードをかざすと食材が選択され、Raspberry Pi とモーターで調理演出を制御。Web UIからリアルタイムに操作可能。',
     tags: ['React', 'Raspberry Pi', 'Express', 'MicroPython', 'RFID'],
@@ -198,6 +208,34 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <hr className="border-gray-100" />
+
+      {/* Press */}
+      <section id="press" className="py-20 scroll-mt-16">
+        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">Media</p>
+        <h2 className="text-3xl font-light text-gray-900 mb-12">Press Coverage</h2>
+        <div className="space-y-0">
+          {[
+            { outlet: 'PR TIMES', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://prtimes.jp/main/html/rd/p/000000013.000141944.html' },
+            { outlet: 'Plaru News', title: '守山市の官民連携プロジェクトサポート事業に採択されました', date: '2026/08/19', href: 'https://www.plaru.co.jp/news/post/rsWAfwor' },
+            { outlet: 'びわ湖大津経済新聞', title: '守山市×Plaruのデジタルスタンプラリーでびわこ周遊促進', date: '2026/08/19', href: 'https://biwako-otsu.keizai.biz/headline/3366/' },
+            { outlet: 'infoseek ニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://news.infoseek.co.jp/article/prtimes_000000013_000141944/' },
+            { outlet: 'Excite ニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://www.excite.co.jp/news/article/Prtimes_2026-08-19-141944-13/' },
+            { outlet: 'ニコニコニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://news.nicovideo.jp/watch/nw19679343' },
+            { outlet: 'Social Business', title: 'AIが自動生成：守山市×Plaru 観光DX実証プロジェクト', date: '2026/08/19', href: 'https://socialbusiness.aishas.co.jp/socialbusinessnews_aiautomaticallygeneration/30484/' },
+            { outlet: 'Instagram', title: '琵琶湖・守山スタンプラリー 公式投稿', date: '2026/08', href: 'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1' },
+          ].map(({ outlet, title, date, href }) => (
+            <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+              className="flex gap-6 border-t border-gray-100 py-4 group hover:bg-gray-50 -mx-2 px-2 rounded transition-colors">
+              <span className="text-xs text-gray-400 w-32 flex-shrink-0 pt-0.5">{outlet}</span>
+              <span className="text-sm text-gray-700 group-hover:text-gray-500 transition-colors flex-1 leading-snug">{title}</span>
+              <span className="text-xs text-gray-400 flex-shrink-0 pt-0.5 hidden sm:block">{date}</span>
+            </a>
+          ))}
+          <div className="border-t border-gray-100" />
         </div>
       </section>
 
