@@ -1,46 +1,35 @@
+'use client'
+
 import Image from 'next/image'
+import { useLang } from '@/contexts/LanguageContext'
+import { t } from '@/locales/translations'
 
-const skills = ['React', 'React Native', 'TypeScript', 'Next.js', 'Node.js', 'Python']
+const projectLinks = [
+  [
+    { label: 'PR Times', href: 'https://prtimes.jp/main/html/rd/p/000000013.000141944.html' },
+    { label: 'Plaru News', href: 'https://www.plaru.co.jp/news/post/rsWAfwor' },
+    { label: 'Instagram', href: 'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1' },
+  ],
+  [
+    { label: 'Zenn', href: 'https://zenn.dev/aya_taka/articles/519bfb52a7bfab' },
+    { label: 'GitHub', href: 'https://github.com/fox-Nh133/interactive-outdoor-cooking-demo' },
+  ],
+  [
+    { label: 'App Store', href: 'https://apps.apple.com/jp/app/%E3%81%B7%E3%82%89%E3%82%8B-%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88%E6%8E%A2%E3%81%97-ai%E6%97%85%E8%A1%8C%E8%A8%88%E7%94%BB/id6470826820' },
+    { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.plaru.gamma&hl=ja' },
+  ],
+  [],
+]
 
-const projects: {
-  title: string
-  description: string
-  tags: string[]
-  links?: { label: string; href: string }[]
-}[] = [
-  {
-    title: '琵琶湖・守山スタンプラリー — 守山市 × Plaru 観光DX実証',
-    description: '守山市の官民連携プロジェクトサポート事業に採択。AI旅行計画アプリ「ぷらる」を活用し、滋賀県内30か所を巡るデジタルスタンプラリーを2026年8月〜2027年2月に実施。観光客の周遊データを可視化し、データドリブンな観光施策の立案を支援する観光DX実証。',
-    tags: ['観光DX', 'React Native', 'AI', 'Open Data', '官民連携'],
-    links: [
-      { label: 'PR Times', href: 'https://prtimes.jp/main/html/rd/p/000000013.000141944.html' },
-      { label: 'Plaru News', href: 'https://www.plaru.co.jp/news/post/rsWAfwor' },
-      { label: 'Instagram', href: 'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1' },
-    ],
-  },
-  {
-    title: 'Interactive Outdoor Cooking Machine — Osaka Expo Scout Day',
-    description: '大阪万博スカウトデイで展示した野外料理体験マシーン。RFIDカードをかざすと食材が選択され、Raspberry Pi とモーターで調理演出を制御。Web UIからリアルタイムに操作可能。',
-    tags: ['React', 'Raspberry Pi', 'Express', 'MicroPython', 'RFID'],
-    links: [
-      { label: 'Zenn', href: 'https://zenn.dev/aya_taka/articles/519bfb52a7bfab' },
-      { label: 'GitHub', href: 'https://github.com/fox-Nh133/interactive-outdoor-cooking-demo' },
-    ],
-  },
-  {
-    title: 'ぷらる — AIスポット探し・旅行計画アプリ',
-    description: 'AIが旅行プランを自動生成するスポット探し・旅行計画アプリ。株式会社 Plaru にてファウンダー兼エンジニアとして UI/UX 設計・フルスタック開発を担当。',
-    tags: ['React Native', 'TypeScript', 'Node.js', 'AI'],
-    links: [
-      { label: 'App Store', href: 'https://apps.apple.com/jp/app/%E3%81%B7%E3%82%89%E3%82%8B-%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88%E6%8E%A2%E3%81%97-ai%E6%97%85%E8%A1%8C%E8%A8%88%E7%94%BB/id6470826820' },
-      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.plaru.gamma&hl=ja' },
-    ],
-  },
-  {
-    title: 'Portfolio Site',
-    description: 'Next.js + TypeScript + Tailwind CSS で構築した個人ポートフォリオサイト。',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-  },
+const pressHrefs = [
+  'https://prtimes.jp/main/html/rd/p/000000013.000141944.html',
+  'https://www.plaru.co.jp/news/post/rsWAfwor',
+  'https://biwako-otsu.keizai.biz/headline/3366/',
+  'https://news.infoseek.co.jp/article/prtimes_000000013_000141944/',
+  'https://www.excite.co.jp/news/article/Prtimes_2026-08-19-141944-13/',
+  'https://news.nicovideo.jp/watch/nw19679343',
+  'https://socialbusiness.aishas.co.jp/socialbusinessnews_aiautomaticallygeneration/30484/',
+  'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1',
 ]
 
 const articles = [
@@ -53,31 +42,27 @@ const articles = [
   },
 ]
 
+const skills = ['React', 'React Native', 'TypeScript', 'Next.js', 'Node.js', 'Python']
+
 export default function Home() {
+  const { lang } = useLang()
+  const T = t[lang]
+
   return (
     <div className="max-w-4xl mx-auto px-6">
       {/* Hero */}
       <section className="py-24">
-        <p className="text-sm text-gray-400 mb-2 tracking-widest uppercase">Software Engineer</p>
+        <p className="text-sm text-gray-400 mb-2 tracking-widest uppercase">{T.hero.role}</p>
         <h1 className="text-4xl sm:text-5xl font-light text-gray-900 mb-6 leading-tight">
           HONDA Takayuki
         </h1>
-        <p className="text-gray-600 max-w-xl leading-relaxed mb-8">
-          私のポートフォリオのメインテーマは「旅好きなエンジニアの旅路」です。
-          技術を追いかけるのではなく、技術を楽しむ。まるで世界を旅する冒険家のように、常に新しい知識と技術の探求を続けます。
-        </p>
+        <p className="text-gray-600 max-w-xl leading-relaxed mb-8">{T.hero.description}</p>
         <div className="flex items-center gap-6">
-          <a
-            href="#about"
-            className="text-sm font-medium text-gray-900 border-b border-gray-900 pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors"
-          >
-            About me →
+          <a href="#about" className="text-sm font-medium text-gray-900 border-b border-gray-900 pb-0.5 hover:text-gray-500 hover:border-gray-500 transition-colors">
+            {T.hero.aboutLink}
           </a>
-          <a
-            href="#projects"
-            className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-          >
-            Projects
+          <a href="#projects" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            {T.hero.projectsLink}
           </a>
         </div>
       </section>
@@ -86,27 +71,18 @@ export default function Home() {
 
       {/* About */}
       <section id="about" className="py-20 scroll-mt-16">
-        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">About</p>
+        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">{T.about.label}</p>
         <h2 className="text-3xl font-light text-gray-900 mb-12">HONDA Takayuki</h2>
 
         <div className="grid sm:grid-cols-3 gap-12 mb-16">
           <div className="sm:col-span-2 space-y-6">
-            <p className="text-gray-600 leading-relaxed">
-              Software engineer based in Kyoto. Studying information engineering at Ritsumeikan University,
-              with a focus on full-stack web development, UI/UX design, and open-source software.
-              Co-founded a startup and contributed to autonomous driving OSS.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Outside of engineering, I work as a tennis coach — teaching players of all ages and levels.
-              I believe in enjoying technology the same way a traveler enjoys exploring the world: with curiosity and no fixed destination.
-            </p>
+            <p className="text-gray-600 leading-relaxed">{T.about.bio1}</p>
+            <p className="text-gray-600 leading-relaxed">{T.about.bio2}</p>
             <div>
-              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-4">Skills</h3>
+              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-4">{T.about.skillsLabel}</h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map(skill => (
-                  <span key={skill} className="text-sm text-gray-600 border border-gray-200 px-3 py-1 rounded">
-                    {skill}
-                  </span>
+                  <span key={skill} className="text-sm text-gray-600 border border-gray-200 px-3 py-1 rounded">{skill}</span>
                 ))}
               </div>
             </div>
@@ -114,24 +90,16 @@ export default function Home() {
 
           <div className="space-y-6">
             <div>
-              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">Links</h3>
+              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">{T.about.linksLabel}</h3>
               <ul className="space-y-2">
-                <li>
-                  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                    GitHub ↗
-                  </a>
-                </li>
-                <li>
-                  <a href="https://zenn.dev/aya_taka" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                    Zenn ↗
-                  </a>
-                </li>
+                <li><a href="https://github.com/Tucker925H" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">GitHub ↗</a></li>
+                <li><a href="https://zenn.dev/aya_taka" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Zenn ↗</a></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">Interests</h3>
+              <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">{T.about.interestsLabel}</h3>
               <ul className="space-y-1">
-                {['Full-Stack Development', 'UI / UX Design', 'Product Management', 'Tennis Coaching'].map(item => (
+                {T.about.interests.map(item => (
                   <li key={item} className="text-sm text-gray-600">{item}</li>
                 ))}
               </ul>
@@ -140,34 +108,19 @@ export default function Home() {
         </div>
 
         {/* Biography */}
-        <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-10">Biography</h3>
+        <h3 className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-10">{T.about.biographyLabel}</h3>
         <div className="space-y-0">
-          {/* Education */}
-          <p className="text-xs tracking-widest uppercase text-gray-300 mb-6">Education</p>
-          {[
-            { period: '2021', desc: 'Graduated from Ritsumeikan Moriyama High School' },
-            { period: '2021–', desc: 'Enrolled in Ritsumeikan University, College of Information Science and Engineering, Dept. of Information Science and Engineering' },
-            { period: '2023', desc: 'Leave of absence (Apr 2023 – Mar 2024) to focus on self-development and startup operations' },
-            { period: '2026', desc: 'Graduated from Ritsumeikan University, Systems Architecture Course' },
-            { period: '2026–', desc: 'Enrolled in Ritsumeikan University Graduate School, Master\'s Program in Computer Science (Doctoral Program, First Term)' },
-            { period: '2028', desc: 'Expected graduation' },
-          ].map(({ period, desc }) => (
+          <p className="text-xs tracking-widest uppercase text-gray-300 mb-6">{T.about.educationLabel}</p>
+          {T.about.education.map(({ period, desc }) => (
             <div key={period + desc} className="flex gap-8 border-t border-gray-100 py-5">
-              <span className="text-sm text-gray-400 w-16 flex-shrink-0 pt-0.5">{period}</span>
+              <span className="text-sm text-gray-400 w-32 flex-shrink-0 pt-0.5">{period}</span>
               <span className="text-sm text-gray-700 leading-relaxed">{desc}</span>
             </div>
           ))}
-
-          {/* Work */}
-          <p className="text-xs tracking-widest uppercase text-gray-300 mt-10 mb-6">Work</p>
-          {[
-            { period: '2021–', desc: 'Tennis Coach, Arrows Tennis School (part-time)' },
-            { period: '2023–', desc: 'External Tennis Coach, Ritsumeikan Moriyama Middle & High School Tennis Club (part-time)' },
-            { period: '2023–', desc: 'Founder & Software Engineer, Plaru Inc. (registered Apr 2025) — UI/UX design, full-stack development, product management' },
-            { period: '2025–2026', desc: 'Software Engineer, Tier IV Inc. (part-time) — OSS feature development and software maintenance' },
-          ].map(({ period, desc }) => (
+          <p className="text-xs tracking-widest uppercase text-gray-300 mt-10 mb-6">{T.about.workLabel}</p>
+          {T.about.work.map(({ period, desc }) => (
             <div key={period + desc} className="flex gap-8 border-t border-gray-100 py-5">
-              <span className="text-sm text-gray-400 w-16 flex-shrink-0 pt-0.5">{period}</span>
+              <span className="text-sm text-gray-400 w-32 flex-shrink-0 pt-0.5">{period}</span>
               <span className="text-sm text-gray-700 leading-relaxed">{desc}</span>
             </div>
           ))}
@@ -179,25 +132,22 @@ export default function Home() {
 
       {/* Projects */}
       <section id="projects" className="py-20 scroll-mt-16">
-        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">Work</p>
-        <h2 className="text-3xl font-light text-gray-900 mb-12">Projects</h2>
-
+        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">{T.projects.label}</p>
+        <h2 className="text-3xl font-light text-gray-900 mb-12">{T.projects.title}</h2>
         <div className="space-y-6">
-          {projects.map((project, i) => (
+          {T.projects.items.map((project, i) => (
             <div key={i} className="border border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-colors">
               <h3 className="text-base font-medium text-gray-900 mb-3">{project.title}</h3>
               <p className="text-sm text-gray-600 mb-4 leading-relaxed">{project.description}</p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map(tag => (
-                    <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
-                      {tag}
-                    </span>
+                    <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{tag}</span>
                   ))}
                 </div>
-                {project.links && (
+                {projectLinks[i]?.length > 0 && (
                   <div className="flex gap-4">
-                    {project.links.map(({ label, href }) => (
+                    {projectLinks[i].map(({ label, href }) => (
                       <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                         className="text-xs text-gray-500 hover:text-gray-900 transition-colors">
                         {label} ↗
@@ -215,20 +165,11 @@ export default function Home() {
 
       {/* Press */}
       <section id="press" className="py-20 scroll-mt-16">
-        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">Media</p>
-        <h2 className="text-3xl font-light text-gray-900 mb-12">Press Coverage</h2>
+        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">{T.press.label}</p>
+        <h2 className="text-3xl font-light text-gray-900 mb-12">{T.press.title}</h2>
         <div className="space-y-0">
-          {[
-            { outlet: 'PR TIMES', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://prtimes.jp/main/html/rd/p/000000013.000141944.html' },
-            { outlet: 'Plaru News', title: '守山市の官民連携プロジェクトサポート事業に採択されました', date: '2026/08/19', href: 'https://www.plaru.co.jp/news/post/rsWAfwor' },
-            { outlet: 'びわ湖大津経済新聞', title: '守山市×Plaruのデジタルスタンプラリーでびわこ周遊促進', date: '2026/08/19', href: 'https://biwako-otsu.keizai.biz/headline/3366/' },
-            { outlet: 'infoseek ニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://news.infoseek.co.jp/article/prtimes_000000013_000141944/' },
-            { outlet: 'Excite ニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://www.excite.co.jp/news/article/Prtimes_2026-08-19-141944-13/' },
-            { outlet: 'ニコニコニュース', title: '守山で始まった高校生の挑戦が、5年後、観光DXによる地域課題解決へ', date: '2026/08/19', href: 'https://news.nicovideo.jp/watch/nw19679343' },
-            { outlet: 'Social Business', title: 'AIが自動生成：守山市×Plaru 観光DX実証プロジェクト', date: '2026/08/19', href: 'https://socialbusiness.aishas.co.jp/socialbusinessnews_aiautomaticallygeneration/30484/' },
-            { outlet: 'Instagram', title: '琵琶湖・守山スタンプラリー 公式投稿', date: '2026/08', href: 'https://www.instagram.com/p/DdflFcTE7hm/?img_index=1' },
-          ].map(({ outlet, title, date, href }) => (
-            <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+          {T.press.items.map(({ outlet, title, date }, i) => (
+            <a key={i} href={pressHrefs[i]} target="_blank" rel="noopener noreferrer"
               className="flex gap-6 border-t border-gray-100 py-4 group hover:bg-gray-50 -mx-2 px-2 rounded transition-colors">
               <span className="text-xs text-gray-400 w-32 flex-shrink-0 pt-0.5">{outlet}</span>
               <span className="text-sm text-gray-700 group-hover:text-gray-500 transition-colors flex-1 leading-snug">{title}</span>
@@ -243,26 +184,18 @@ export default function Home() {
 
       {/* Articles */}
       <section id="articles" className="py-20 scroll-mt-16">
-        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">Writing</p>
-        <h2 className="text-3xl font-light text-gray-900 mb-12">Articles</h2>
-
+        <p className="text-xs tracking-widest uppercase text-gray-400 mb-2">{T.articles.label}</p>
+        <h2 className="text-3xl font-light text-gray-900 mb-12">{T.articles.title}</h2>
         <div className="space-y-8">
           {articles.map((article, i) => (
             <a key={i} href={article.href} target="_blank" rel="noopener noreferrer">
               <div className="flex gap-5 items-start group">
-                <Image
-                  src={article.img}
-                  alt={article.title}
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-cover rounded flex-shrink-0 bg-gray-100"
-                />
+                <Image src={article.img} alt={article.title} width={80} height={80}
+                  className="w-20 h-20 object-cover rounded flex-shrink-0 bg-gray-100" />
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap gap-1.5 mb-2">
                     {article.tags.map(tag => (
-                      <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
-                        {tag}
-                      </span>
+                      <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">{tag}</span>
                     ))}
                   </div>
                   <p className="text-sm text-gray-800 group-hover:text-gray-500 transition-colors leading-snug mb-1">
